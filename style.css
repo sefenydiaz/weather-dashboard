@@ -13,6 +13,15 @@ aside {
 
 main {}
 
+#current {
+    display: flexbox;
+    position: relative;
+    float: inline-start;
+    margin: 10px;
+    border: 15px blue;
+
+}
+
 .box {
     display: inline-block;
     margin: 10px 45px;
