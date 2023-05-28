@@ -10,3 +10,10 @@ aside {
     margin-left: 15px;
     float: left;
 }
+
+main {}
+
+.box {
+    display: inline-block;
+    margin: 10px 45px;
+}

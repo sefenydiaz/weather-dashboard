@@ -1,12 +1,21 @@
-var button = document.querySelector('.button');
+var button = document.querySelector('.btn');
 var city = document.querySelector('.city');
 var temp = document.querySelector('.temp');
 var wind = document.querySelector('.wind');
 var humidity = document.querySelector('.humidity');
 var APIKey = "dfb71659a24969b1bb50c11b0d78bb69"
 var city;
-var cityWeather = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+var cityWeather = "http://api.openweathermap.org/data/2.5/weather?q=' + newcity.value + '&appid=" + APIKey;
 var fiveDay = "api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}";
+
+// allows user to search a new city and displays value of new city
+function search() {
+    const newCity = document.getElementById("newCity");
+    const cityName = document.getElementById("city");
+    cityName.innerHTML = "--" + newCity.value + "--"
+}
+
+
 
 button.addEventListener('click', function () {
     fetch(cityWeather)
@@ -23,6 +32,7 @@ button.addEventListener('click', function () {
                 wind.innerHTML = windEl;
                 humidity.innerHTML = humidityEl;
             })
+        })
 
-                .catch(error => alert("Incorrect city name!"))
-        }})
+        .catch(error => alert("Incorrect city name!"))
+})
