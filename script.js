@@ -5,7 +5,7 @@ var wind = document.querySelector('.wind');
 var humidity = document.querySelector('.humidity');
 var APIKey = "dfb71659a24969b1bb50c11b0d78bb69";
 var city;
-var cityWeather = "http://api.openweathermap.org/data/2.5/weather?q=' + newcity.value + '&appid=" + APIKey;
+//var cityWeather = "http://api.openweathermap.org/data/2.5/weather?q=' + newcity.value + '&appid=" + APIKey;
 var fiveDay = "http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}";
 
 
@@ -37,22 +37,22 @@ window.onload = function () {
 
 
 
-// button.addEventListener('click', function () {
-//     fetch(cityWeather)
-//         .then(response => response.json())
-//     // return response.json()
-//     then(data => {
-//         var cityEl = data['city'];
-//         var tempEl = data['temp'];
-//         var windEl = data['wind'];
-//         var humidityEl = data['humidity'];
+button.addEventListener('click', function () {
+    fetch(('http://api.openweathermap.org/data/2.5/weather?id=' + cityName + '&appid=' + APIKey))
+        .then(response => response.json())
+        // return response.json()
+        .then(data => {
+            var cityEl = data['city'];
+            var tempEl = data['temp'];
+            var windEl = data['wind'];
+            var humidityEl = data['humidity'];
 
-//         city.innerHTML = cityEl;
-//         temp.innerHTML = tempEl;
-//         wind.innerHTML = windEl;
-//         humidity.innerHTML = humidityEl;
+            city.innerHTML = cityEl;
+            temp.innerHTML = tempEl;
+            wind.innerHTML = windEl;
+            humidity.innerHTML = humidityEl;
 
-//     })
+        })
 
-//         .catch(error => alert("Incorrect city name!"))
-// })
+        .catch(error => alert("Incorrect city name!"))
+})
