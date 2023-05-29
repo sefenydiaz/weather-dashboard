@@ -24,7 +24,7 @@ window.onload = function () {
     weather(6167865);
 }
 
-function renderWeather()
+//function renderWeather()
 
 // //allows user to search a new city and displays value of new city
 // button.addEventListener('click', function () {

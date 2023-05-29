@@ -15,7 +15,7 @@ main {}
 
 #current {
     display: flexbox;
-    position: relative;
+    /*position: relative;*/
     float: inline-start;
     margin: 10px;
     border: 15px blue;
