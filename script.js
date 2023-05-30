@@ -64,8 +64,8 @@ button.addEventListener('click', function () {
             city.textContent = cityEl;
             temp.innerHTML = `<p>Temp: ${tempEl}\u00B0</p>`;
             // use same syntax to edit els below
-            wind.innerHTML = windEl;
-            humidity.innerHTML = humidityEl;
+            wind.innerHTML = `<p>Wind: ${windEl}<p>`;
+            humidity.innerHTML = `<p>Humidity: ${humidityEl}<p>`;
 
 
 
