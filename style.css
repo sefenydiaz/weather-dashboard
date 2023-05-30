@@ -22,7 +22,14 @@ main {}
 
 }
 
+h2 {
+    color: royalblue;
+    display: flex;
+    margin: 10px 20px;
+    margin-left: 20px;
+}
+
 .box {
     display: inline-block;
-    margin: 10px 45px;
+    margin: 10px 40px;
 }

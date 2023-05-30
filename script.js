@@ -3,25 +3,38 @@ var city = document.querySelector('.city');
 var temp = document.querySelector('.temp');
 var wind = document.querySelector('.wind');
 var humidity = document.querySelector('.humidity');
+var searchInput = document.querySelector('#searchInput')
+var weatherBoxes = document.querySelector('#weatherboxes')
 var APIKey = "dfb71659a24969b1bb50c11b0d78bb69";
 var city;
 //var cityWeather = "http://api.openweathermap.org/data/2.5/weather?q=' + newcity.value + '&appid=" + APIKey;
-var fiveDay = "http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}";
+var lat;
+var lon;
 
+function forecast(cityName) {
 
-function weather(cityName) {
-    var APIKey = "dfb71659a24969b1bb50c11b0d78bb69";
-    fetch('http://api.openweathermap.org/data/2.5/weather?id=' + cityName + '&appid=' + APIKey)
+    var fiveDay = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=" + APIKey;
+    fetch(fiveDay)
         .then(function (response) { return response.json() })
         .then(function (data) {
             console.log(data);
-        })
-        .catch(function () {
+            for (var i = 7; i < data.list.length; i += 8) {
+                var currentDay = data.list[i]
+                console.log(currentDay)
+                var box = document.createElement("div")
+                box.setAttribute("class", "box")
+                var date = document.createElement("p")
+                date.textContent = currentDay.dt_txt
 
+
+
+                box.append(date)
+                weatherBoxes.append(box)
+            }
+        })
+        .catch(function (error) {
+            console.log(error)
         });
-}
-window.onload = function () {
-    weather(6167865);
 }
 
 //function renderWeather()
@@ -38,21 +51,33 @@ window.onload = function () {
 
 
 button.addEventListener('click', function () {
-    fetch(('http://api.openweathermap.org/data/2.5/weather?id=' + cityName + '&appid=' + APIKey))
+    fetch(('http://api.openweathermap.org/data/2.5/weather?q=' + searchInput.value + '&units=imperial&appid=' + APIKey))
         .then(response => response.json())
         // return response.json()
         .then(data => {
-            var cityEl = data['city'];
-            var tempEl = data['temp'];
-            var windEl = data['wind'];
-            var humidityEl = data['humidity'];
+            console.log(data)
+            var cityEl = data.name;
+            var tempEl = data.main.temp;
+            var windEl = data.wind.speed;
+            var humidityEl = data.main.humidity;
 
-            city.innerHTML = cityEl;
-            temp.innerHTML = tempEl;
+            city.textContent = cityEl;
+            temp.innerHTML = `<p>Temp: ${tempEl}\u00B0</p>`;
+            // use same syntax to edit els below
             wind.innerHTML = windEl;
             humidity.innerHTML = humidityEl;
 
+
+
+            forecast(searchInput.value);
         })
 
         .catch(error => alert("Incorrect city name!"))
 })
+
+
+// var obj = {
+//     name: "Bob",
+//     hobbies: [{ name: "Hiking", frequency: "a lot", nested: { morestuff: "somehting" } }]
+// }
+// obj.hobbies[0].nested.morestuff
