@@ -50,21 +50,11 @@ function forecast(cityName) {
         });
 }
 
-//function renderWeather()
-
-// //allows user to search a new city and displays value of new city
-// button.addEventListener('click', function () {
-//     //function search() {
-//     search()
-//     const newCity = document.getElementById("newCity");
-//     const cityName = document.getElementById("city");
-//     cityName.innerHTML = "--" + newCity.value + "--"
-// })
 
 
 
 button.addEventListener('click', function () {
-    fetch(('http://api.openweathermap.org/data/2.5/weather?q=' + searchInput.value + '&units=imperial&appid=' + APIKey))
+    fetch(("https://api.openweathermap.org/data/2.5/weather?q=" + searchInput.value + "&units=imperial&appid=" + APIKey))
         .then(response => response.json())
         // return response.json()
         .then(data => {
