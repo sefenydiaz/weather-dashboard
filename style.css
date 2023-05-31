@@ -1,0 +1,36 @@
+* {}
+
+body {}
+
+header {}
+
+aside {
+    width: 30%;
+    padding-left: 15px;
+    margin-left: 15px;
+    float: left;
+}
+
+main {}
+
+#current {
+    display: flex;
+    /*position: relative;*/
+
+    margin: 10px;
+    border: solid 12px blue;
+
+}
+
+
+h2 {
+    color: royalblue;
+    display: flex;
+    margin: 10px 20px;
+    margin-left: 20px;
+}
+
+#box {
+    display: inline-block;
+    margin: 10px 30px;
+}
