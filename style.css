@@ -14,13 +14,14 @@ aside {
 main {}
 
 #current {
-    display: flexbox;
+    display: flex;
     /*position: relative;*/
-    float: inline-start;
+
     margin: 10px;
-    border: 15px blue;
+    border: solid 12px blue;
 
 }
+
 
 h2 {
     color: royalblue;
@@ -29,7 +30,7 @@ h2 {
     margin-left: 20px;
 }
 
-.box {
+#box {
     display: inline-block;
-    margin: 10px 40px;
+    margin: 10px 30px;
 }

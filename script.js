@@ -21,15 +21,28 @@ function forecast(cityName) {
             for (var i = 7; i < data.list.length; i += 8) {
                 var currentDay = data.list[i]
                 console.log(currentDay)
+                // append forecast to window using js
                 var box = document.createElement("div")
-                box.setAttribute("class", "box")
+                box.setAttribute("id", "box")
+
                 var date = document.createElement("p")
                 date.textContent = currentDay.dt_txt
-
+                var dayTemp = document.createElement("p")
+                dayTemp.textContent = "Temp: " + currentDay.main.temp + "\u00B0"
+                var dayWind = document.createElement("p")
+                dayWind.textContent = "Wind: " + currentDay.wind.speed + " MPH"
+                var dayHumidity = document.createElement("p")
+                dayHumidity.textContent = "Humidity: " + currentDay.main.humidity + "\u0025"
 
 
                 box.append(date)
+                box.append(dayTemp)
+                box.append(dayWind)
+                box.append(dayHumidity)
                 weatherBoxes.append(box)
+
+                // ADD STYLING
+                // document.getElementById('box').style.border = 'solid 16px';
             }
         })
         .catch(function (error) {
@@ -64,8 +77,8 @@ button.addEventListener('click', function () {
             city.textContent = cityEl;
             temp.innerHTML = `<p>Temp: ${tempEl}\u00B0</p>`;
             // use same syntax to edit els below
-            wind.innerHTML = `<p>Wind: ${windEl}<p>`;
-            humidity.innerHTML = `<p>Humidity: ${humidityEl}<p>`;
+            wind.innerHTML = `<p>Wind: ${windEl} MPH<p>`;
+            humidity.innerHTML = `<p>Humidity: ${humidityEl}\u0025<p>`;
 
 
 
