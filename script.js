@@ -53,8 +53,10 @@ function forecast(cityName) {
 
 
 
-button.addEventListener('click', function () {
-    fetch(("https://api.openweathermap.org/data/2.5/weather?q=" + searchInput.value + "&units=imperial&appid=" + APIKey))
+button.addEventListener('click', function (event) {
+    event.preventDefault()
+
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + searchInput.value + "&units=imperial&appid=" + APIKey)
         .then(response => response.json())
         // return response.json()
         .then(data => {
@@ -75,7 +77,10 @@ button.addEventListener('click', function () {
             forecast(searchInput.value);
         })
 
-        .catch(error => alert("Incorrect city name!"))
+        .catch(error => {
+            console.log(error)
+            alert("Incorrect city name!")
+        })
 })
 
 
