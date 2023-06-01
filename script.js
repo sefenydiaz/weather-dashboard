@@ -2,6 +2,7 @@ var button = document.querySelector('.btn');
 var city = document.querySelector('.city');
 var temp = document.querySelector('.temp');
 var wind = document.querySelector('.wind');
+var logo = document.querySelector('#current-icon');
 var humidity = document.querySelector('.humidity');
 var searchInput = document.querySelector('#searchInput')
 var weatherBoxes = document.querySelector('#weatherboxes')
@@ -33,12 +34,14 @@ function forecast(cityName) {
                 dayWind.textContent = "Wind: " + currentDay.wind.speed + " MPH"
                 var dayHumidity = document.createElement("p")
                 dayHumidity.textContent = "Humidity: " + currentDay.main.humidity + "\u0025"
+                var icon = document.createElement("img")
+                var iconEl = "https://openweathermap.org/img/wn/" + currentDay.weather[0].icon + ".png"
+                icon.setAttribute("src", iconEl)
 
-
-                box.append(date)
-                box.append(dayTemp)
-                box.append(dayWind)
-                box.append(dayHumidity)
+                box.append(date, icon, dayTemp, dayWind, dayHumidity)
+                // box.append(dayTemp)
+                // box.append(dayWind)
+                // box.append(dayHumidity)
                 weatherBoxes.append(box)
 
                 // ADD STYLING
@@ -65,6 +68,7 @@ button.addEventListener('click', function (event) {
             var tempEl = data.main.temp;
             var windEl = data.wind.speed;
             var humidityEl = data.main.humidity;
+            var iconEl = "https://openweathermap.org/img/wn/" + data.weather[0].icon + ".png"
 
             city.textContent = cityEl;
             temp.innerHTML = `<p>Temp: ${tempEl}\u00B0</p>`;
@@ -72,7 +76,7 @@ button.addEventListener('click', function (event) {
             wind.innerHTML = `<p>Wind: ${windEl} MPH<p>`;
             humidity.innerHTML = `<p>Humidity: ${humidityEl}\u0025<p>`;
 
-
+            logo.setAttribute("src", iconEl)
 
             forecast(searchInput.value);
         })
